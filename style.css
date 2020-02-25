@@ -1,0 +1,360 @@
+body{
+  margin: 0;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  background: radial-gradient(ellipse at 50% 50%, #252525 0%, black 100%);
+}
+
+main{
+  margin: 10vh 10vw;
+  padding: 1.5em;
+  height: calc(80vh - 3em);
+  width: calc(80vw - 3em);
+  background-color: rgba(0,0,0,0.5);
+  border-radius: 10px;
+}
+
+.control {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: white;
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer */
+  -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+  -webkit-user-select: none; /* Chrome, Safari, and Opera */
+}
+
+.control:active {
+  color: lightgrey;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+/*
+ * HEADER ----------------------------------------------------------------------
+ */
+
+header {
+  overflow: hidden;
+  margin-bottom: 4px;
+  border-bottom: 2px solid white;
+}
+
+header h1 {
+  display: inline-block;
+  font-family: 'Gugi', sans-serif;
+  margin: 0;
+  float: left;
+  padding: 0;
+}
+
+header input {
+  border: none;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  background: none;
+  outline: none;
+  color: white;
+  width: 35px;
+  text-align: center;
+}
+
+header p {
+  display: inline-block;
+  margin: 0px 1px;
+  color: lightgrey;
+}
+
+header .control {
+  height: 2em;
+  width: 2em;
+  margin: calc(0.25em + 2px) 1px;
+  border-radius: 100%;
+}
+
+/* Style the buttons that are used to open the tab content */
+header .tablinks {
+  background: none;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  float: right;
+  font-size: 1em;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: grey;
+  padding-top: 0.8em;
+  padding-right: 0.5em;
+  transition: color 0.5s;
+}
+
+header .tablinks:hover {
+  color: lightgrey;
+}
+
+header .tablinks.active {
+  color: white;
+}
+
+.tabcontent {
+  display: none;
+  animation: fadeEffect 0.5s;
+  height: calc(80vh - 4em - 40px);
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/*
+ * TRACK -----------------------------------------------------------------------
+ */
+
+.track {
+  margin-top: 10px;
+  position: relative;
+}
+
+.track div {
+  display: inline-block;
+}
+
+.key {
+  font-family: 'Gugi', sans-serif;
+  width: 30px;
+  font-size: 1.5em;
+  padding-left: 19px;
+  color: white;
+  margin-right: 15px;
+  border-left: 4px solid grey;
+}
+
+.track_name {
+  border: none;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  margin-right: 15px;
+  background: none;
+  outline: none;
+  color: white;
+  width: 80px;
+  text-align: center;
+}
+
+.color {
+  padding: 0;
+  width: 19px;
+}
+
+/* Loop checkbox */
+
+.loop input[type=checkbox] {
+    visibility: hidden;
+}
+
+.loop {
+    width: 40px;
+    height: 40px;
+    background: none;
+    margin: 2px;
+}
+
+.loop label {
+    transition: all .5s ease;
+    cursor: pointer;
+    z-index: 1;
+    color: grey;
+}
+
+.loop input[type=checkbox]:checked + label {
+    color: #ffffff;
+}
+
+/* Sequence checkbox */
+
+.sequence div input[type=checkbox] {
+    visibility: hidden;
+}
+
+.sequence div {
+    width: 25px;
+    height: 25px;
+}
+
+.sequence i {
+  font-size: 1.5em;
+}
+
+.sequence label {
+    transition: color .2s ease;
+    cursor: pointer;
+    z-index: 1;
+    color: rgba(100,100,100,0.75);
+}
+
+.sequence input[type=checkbox]:checked + label {
+  color: grey;
+}
+
+.current {
+  border-bottom: 2px solid white;
+}
+
+.active {
+  color: white;
+}
+
+.sequence {
+  margin-right: 15px;
+}
+
+/* Slider */
+/* CSS Generated with http://danielstern.ca/range.css */
+input[type=range] {
+  -webkit-appearance: none;
+  width: 125px;
+  margin-right: 15px;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 125px;
+  height: 20.1px;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+  background: rgba(100, 100, 100, 0.75);
+  border-radius: 0px;
+  border: 0px solid rgba(0, 0, 0, 0);
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+  border: 0px solid rgba(0, 0, 0, 0);
+  height: 20px;
+  width: 10px;
+  border-radius: 0px;
+  background: #ffffff;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: 0.05px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: rgba(100, 100, 100, 0.75);
+}
+input[type=range]::-moz-range-track {
+  width: 125px;
+  height: 20.1px;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+  background: rgba(100, 100, 100, 0.75);
+  border-radius: 0px;
+  border: 0px solid rgba(0, 0, 0, 0);
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+  border: 0px solid rgba(0, 0, 0, 0);
+  height: 20px;
+  width: 10px;
+  border-radius: 0px;
+  background: #ffffff;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 125px;
+  height: 20.1px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: rgba(100, 100, 100, 0.75);
+  border: 0px solid rgba(0, 0, 0, 0);
+  border-radius: 0px;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+}
+input[type=range]::-ms-fill-upper {
+  background: rgba(100, 100, 100, 0.75);
+  border: 0px solid rgba(0, 0, 0, 0);
+  border-radius: 0px;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+  border: 0px solid rgba(0, 0, 0, 0);
+  width: 10px;
+  border-radius: 0px;
+  background: #ffffff;
+  cursor: pointer;
+  height: 20px;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: rgba(100, 100, 100, 0.75);
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: rgba(100, 100, 100, 0.75);
+}
+
+/*
+ * SAMPLES TAB -----------------------------------------------------------------
+ */
+
+.list_container {
+  display: block;
+  width: calc(100% -10px);
+  height: calc(95% - 10px);
+  margin: auto;
+  margin-top: 10px;
+  text-align: center;
+}
+
+ #samples ul {
+   margin: 0;
+   overflow: auto;
+   list-style-type: none;
+   padding: 10px;
+   text-align: center;
+ }
+
+ #samples li {
+   cursor: pointer;
+   width: 210px;
+   display: inline-block;
+   padding: 10px;
+   margin: 5px;
+   border: 2px solid rgba(0,0,0,0);
+   color: grey;
+   transition: 0.2s;
+ }
+
+ #samples li:hover {
+   border: 2px solid white;
+   color: white;
+ }
+
+#samples .selected {
+   border: 2px solid white;
+   color: white;
+ }
+
+/* Load Sample Button */
+
+.button_container{
+  display: block;
+  width: 100%;
+  height: 5%;
+  margin: auto;
+  margin-top: 10px;
+  text-align: center;
+}
+
+#samples button{
+  border: 2px solid white;
+  padding: 7px;
+}

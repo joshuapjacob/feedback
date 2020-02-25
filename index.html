@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The Most Powerful Online Sequencer And Sampler">
+		<meta name="keywords" content="audio, loop, music, sequencer, sampler">
+		<meta name="author" content="Joshua Paul Jacob">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"> <!-- favicon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"> <!-- favicon -->
+    <link href="https://fonts.googleapis.com/css?family=Gugi&display=swap" rel="stylesheet"> <!-- Load Google Font 'Gugi' -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"> <!-- Load Google Font 'Open Sans' -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"> <!-- Load icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css"> <!-- Load Simplebar Scroll CSS-->
+    <script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js" defer></script><!-- Load Simplebar Scroll JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/13.8.9/Tone.min.js" defer></script> <!-- Load tone.js -->
+    <link rel="stylesheet" type="text/css" href="style.css"> <!-- Load main CSS -->
+    <script src="gsap.js" defer></script> <!-- Load animation base -->
+    <script src="bg.js" defer></script> <!-- Load the bg animation script -->
+    <script src="data.js" defer></script> <!-- Load the list of samples and keys -->
+    <script src="script.js" defer></script> <!-- Load main script -->
+    <title> FEEDBACK </title>
+  </head>
+
+  <body>
+    <main>
+
+      <header>
+        <h1> FEEDBACK </h1>
+        <button class="control" onclick="play(event)"><i class="fa fa-play"></i></button>
+        <button class="control" onclick="stop(event)"><i class="fa fa-stop"></i></button>
+        <button class="control" onclick="reset(event)"><i class="fa fa-redo"></i></button>
+        <p>BPM:</p>
+        <input type="number" name="bpm" min="30" max="300" value="120" onchange="changeBPM(event)">
+        <p id="counter">1.1.1</p>
+        <button class="tablinks" onclick="openTab(event, 'credits')">Credits</button>
+        <button class="tablinks" onclick="openTab(event, 'samples')">Samples</button>
+        <button class="tablinks" onclick="openTab(event, 'sequencer')" id="defaultOpen">Sequencer</button>
+      </header>
+
+      <div id="sequencer" class="tabcontent" data-simplebar>
+
+        <!-- The following are the default tracks. -->
+        <div class="track" id="kick">
+          <button class="control key" id="kick_key" onclick="triggerTrack(event)">Q</button> <!-- Trigger button -->
+          <input type="text" value="kick" class="track_name"> <!-- Track name -->
+          <input class="control color" type="color" id="kick_color" value="#ffffff" onchange="changeColor(event)"> <!-- Track color -->
+          <div class="loop"> <!-- Loop checkbox -->
+            <input type="checkbox" id="kick_loop" checked>
+            <label for="kick_loop"><i class="fa fa-sync"></i></label>
+          </div>
+          <div onclick="refreshColors()" class="sequence" id="kick_sequence">
+            <div><input type="checkbox" id="kick-1"><label for="kick-1"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="kick-2"><label for="kick-2"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="kick-3"><label for="kick-3"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="kick-4"><label for="kick-4"><i class="fas fa-square"></i></label></div> <!-- Beat:1 Measure:1 -->
+            <div><input type="checkbox" id="kick-5"><label for="kick-5"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="kick-6"><label for="kick-6"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="kick-7"><label for="kick-7"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="kick-8"><label for="kick-8"><i class="fas fa-square"></i></label></div> <!-- Beat:2 Measure:1 -->
+            <div><input type="checkbox" id="kick-9"><label for="kick-9"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="kick-10"><label for="kick-10"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="kick-11"><label for="kick-11"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="kick-12"><label for="kick-12"><i class="fas fa-square"></i></label></div> <!-- Beat:3 Measure:1 -->
+            <div><input type="checkbox" id="kick-13"><label for="kick-13"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="kick-14"><label for="kick-14"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="kick-15"><label for="kick-15"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="kick-16"><label for="kick-16"><i class="fas fa-square"></i></label></div> <!-- Beat:4 Measure:1 -->
+            <div><input type="checkbox" id="kick-17"><label for="kick-17"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="kick-18"><label for="kick-18"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="kick-19"><label for="kick-19"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="kick-20"><label for="kick-20"><i class="fas fa-square"></i></label></div> <!-- Beat:1 Measure:2 -->
+            <div><input type="checkbox" id="kick-21"><label for="kick-21"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="kick-22"><label for="kick-22"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="kick-23"><label for="kick-23"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="kick-24"><label for="kick-24"><i class="fas fa-square"></i></label></div> <!-- Beat:2 Measure:2 -->
+            <div><input type="checkbox" id="kick-25"><label for="kick-25"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="kick-26"><label for="kick-26"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="kick-27"><label for="kick-27"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="kick-28"><label for="kick-28"><i class="fas fa-square"></i></label></div> <!-- Beat:3 Measure:2 -->
+            <div><input type="checkbox" id="kick-29"><label for="kick-29"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="kick-30"><label for="kick-30"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="kick-31"><label for="kick-31"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="kick-32"><label for="kick-32"><i class="fas fa-square"></i></label></div> <!-- Beat:4 Measure:2 -->
+          </div>
+          <input type="range" name="volume" min="-36" max="6" value="0" class="slider" id="kick_volume" onchange="changePanVol(event)"> <!-- Volume slider -->
+          <input type="range" name="pan" min="-50" max="50" value="0" class="slider" id="kick_pan" onchange="changePanVol(event)"> <!-- Pan slider -->
+          <button class="control del" onclick="deleteTrack(event)"><i class="fa fa-minus-circle"></i></button> <!-- Delete button -->
+        </div>
+
+        <div class="track" id="snare">
+          <button class="control key" id="snare_key" onclick="triggerTrack(event)">W</button> <!-- Trigger button -->
+          <input type="text" value="snare" class="track_name"> <!-- Track name -->
+          <input class="control color" type="color" id="snare_color" value="#ffffff" onchange="changeColor(event)"> <!-- Track color -->
+          <div class="loop"> <!-- Loop checkbox -->
+            <input type="checkbox" id="snare_loop" checked>
+            <label for="snare_loop"><i class="fa fa-sync"></i></label>
+          </div>
+          <div onclick="refreshColors()" class="sequence" id="snare_sequence">
+            <div><input type="checkbox" id="snare-1"><label for="snare-1"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="snare-2"><label for="snare-2"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="snare-3"><label for="snare-3"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="snare-4"><label for="snare-4"><i class="fas fa-square"></i></label></div> <!-- Beat:1 Measure:1 -->
+            <div><input type="checkbox" id="snare-5"><label for="snare-5"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="snare-6"><label for="snare-6"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="snare-7"><label for="snare-7"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="snare-8"><label for="snare-8"><i class="fas fa-square"></i></label></div> <!-- Beat:2 Measure:1 -->
+            <div><input type="checkbox" id="snare-9"><label for="snare-9"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="snare-10"><label for="snare-10"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="snare-11"><label for="snare-11"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="snare-12"><label for="snare-12"><i class="fas fa-square"></i></label></div> <!-- Beat:3 Measure:1 -->
+            <div><input type="checkbox" id="snare-13"><label for="snare-13"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="snare-14"><label for="snare-14"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="snare-15"><label for="snare-15"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="snare-16"><label for="snare-16"><i class="fas fa-square"></i></label></div> <!-- Beat:4 Measure:1 -->
+            <div><input type="checkbox" id="snare-17"><label for="snare-17"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="snare-18"><label for="snare-18"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="snare-19"><label for="snare-19"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="snare-20"><label for="snare-20"><i class="fas fa-square"></i></label></div> <!-- Beat:1 Measure:2 -->
+            <div><input type="checkbox" id="snare-21"><label for="snare-21"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="snare-22"><label for="snare-22"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="snare-23"><label for="snare-23"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="snare-24"><label for="snare-24"><i class="fas fa-square"></i></label></div> <!-- Beat:2 Measure:2 -->
+            <div><input type="checkbox" id="snare-25"><label for="snare-25"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="snare-26"><label for="snare-26"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="snare-27"><label for="snare-27"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="snare-28"><label for="snare-28"><i class="fas fa-square"></i></label></div> <!-- Beat:3 Measure:2 -->
+            <div><input type="checkbox" id="snare-29"><label for="snare-29"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="snare-30"><label for="snare-30"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="snare-31"><label for="snare-31"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="snare-32"><label for="snare-32"><i class="fas fa-square"></i></label></div> <!-- Beat:4 Measure:2 -->
+          </div>
+          <input type="range" name="volume" min="-36" max="6" value="0" class="slider" id="snare_volume" onchange="changePanVol(event)"> <!-- Volume slider -->
+          <input type="range" name="pan" min="-50" max="50" value="0" class="slider" id="snare_pan" onchange="changePanVol(event)"> <!-- Pan slider -->
+          <button class="control del" onclick="deleteTrack(event)"><i class="fa fa-minus-circle"></i></button> <!-- Delete button -->
+        </div>
+
+        <div class="track" id="hho">
+          <button class="control key" id="hho_key" onclick="triggerTrack(event)">E</button> <!-- Trigger button -->
+          <input type="text" value="hho" class="track_name"> <!-- Track name -->
+          <input class="control color" type="color" id="hho_color" value="#ffffff" onchange="changeColor(event)"> <!-- Track color -->
+          <div class="loop"> <!-- Loop checkbox -->
+            <input type="checkbox" id="hho_loop" checked>
+            <label for="hho_loop"><i class="fa fa-sync"></i></label>
+          </div>
+          <div onclick="refreshColors()" class="sequence" id="hho_sequence">
+            <div><input type="checkbox" id="hho-1"><label for="hho-1"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hho-2"><label for="hho-2"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hho-3"><label for="hho-3"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hho-4"><label for="hho-4"><i class="fas fa-square"></i></label></div> <!-- Beat:1 Measure:1 -->
+            <div><input type="checkbox" id="hho-5"><label for="hho-5"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hho-6"><label for="hho-6"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hho-7"><label for="hho-7"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hho-8"><label for="hho-8"><i class="fas fa-square"></i></label></div> <!-- Beat:2 Measure:1 -->
+            <div><input type="checkbox" id="hho-9"><label for="hho-9"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hho-10"><label for="hho-10"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hho-11"><label for="hho-11"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hho-12"><label for="hho-12"><i class="fas fa-square"></i></label></div> <!-- Beat:3 Measure:1 -->
+            <div><input type="checkbox" id="hho-13"><label for="hho-13"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hho-14"><label for="hho-14"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hho-15"><label for="hho-15"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hho-16"><label for="hho-16"><i class="fas fa-square"></i></label></div> <!-- Beat:4 Measure:1 -->
+            <div><input type="checkbox" id="hho-17"><label for="hho-17"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hho-18"><label for="hho-18"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hho-19"><label for="hho-19"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hho-20"><label for="hho-20"><i class="fas fa-square"></i></label></div> <!-- Beat:1 Measure:2 -->
+            <div><input type="checkbox" id="hho-21"><label for="hho-21"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hho-22"><label for="hho-22"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hho-23"><label for="hho-23"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hho-24"><label for="hho-24"><i class="fas fa-square"></i></label></div> <!-- Beat:2 Measure:2 -->
+            <div><input type="checkbox" id="hho-25"><label for="hho-25"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hho-26"><label for="hho-26"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hho-27"><label for="hho-27"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hho-28"><label for="hho-28"><i class="fas fa-square"></i></label></div> <!-- Beat:3 Measure:2 -->
+            <div><input type="checkbox" id="hho-29"><label for="hho-29"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hho-30"><label for="hho-30"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hho-31"><label for="hho-31"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hho-32"><label for="hho-32"><i class="fas fa-square"></i></label></div> <!-- Beat:4 Measure:2 -->
+          </div>
+          <input type="range" name="volume" min="-36" max="6" value="0" class="slider" id="hho_volume" onchange="changePanVol(event)"> <!-- Volume slider -->
+          <input type="range" name="pan" min="-50" max="50" value="0" class="slider" id="hho_pan" onchange="changePanVol(event)"> <!-- Pan slider -->
+          <button class="control del" onclick="deleteTrack(event)"><i class="fa fa-minus-circle"></i></button> <!-- Delete button -->
+        </div>
+
+        <div class="track" id="hhc">
+          <button class="control key" id="hhc_key" onclick="triggerTrack(event)">R</button> <!-- Trigger button -->
+          <input type="text" value="hhc" class="track_name"> <!-- Track name -->
+          <input class="control color" type="color" id="hhc_color" value="#ffffff" onchange="changeColor(event)"> <!-- Track color -->
+          <div class="loop"> <!-- Loop checkbox -->
+            <input type="checkbox" id="hhc_loop" checked>
+            <label for="hhc_loop"><i class="fa fa-sync"></i></label>
+          </div>
+          <div onclick="refreshColors()" class="sequence" id="hhc_sequence">
+            <div><input type="checkbox" id="hhc-1"><label for="hhc-1"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hhc-2"><label for="hhc-2"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hhc-3"><label for="hhc-3"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hhc-4"><label for="hhc-4"><i class="fas fa-square"></i></label></div> <!-- Beat:1 Measure:1 -->
+            <div><input type="checkbox" id="hhc-5"><label for="hhc-5"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hhc-6"><label for="hhc-6"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hhc-7"><label for="hhc-7"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hhc-8"><label for="hhc-8"><i class="fas fa-square"></i></label></div> <!-- Beat:2 Measure:1 -->
+            <div><input type="checkbox" id="hhc-9"><label for="hhc-9"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hhc-10"><label for="hhc-10"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hhc-11"><label for="hhc-11"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hhc-12"><label for="hhc-12"><i class="fas fa-square"></i></label></div> <!-- Beat:3 Measure:1 -->
+            <div><input type="checkbox" id="hhc-13"><label for="hhc-13"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hhc-14"><label for="hhc-14"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hhc-15"><label for="hhc-15"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hhc-16"><label for="hhc-16"><i class="fas fa-square"></i></label></div> <!-- Beat:4 Measure:1 -->
+            <div><input type="checkbox" id="hhc-17"><label for="hhc-17"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hhc-18"><label for="hhc-18"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hhc-19"><label for="hhc-19"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hhc-20"><label for="hhc-20"><i class="fas fa-square"></i></label></div> <!-- Beat:1 Measure:2 -->
+            <div><input type="checkbox" id="hhc-21"><label for="hhc-21"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hhc-22"><label for="hhc-22"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hhc-23"><label for="hhc-23"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hhc-24"><label for="hhc-24"><i class="fas fa-square"></i></label></div> <!-- Beat:2 Measure:2 -->
+            <div><input type="checkbox" id="hhc-25"><label for="hhc-25"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hhc-26"><label for="hhc-26"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hhc-27"><label for="hhc-27"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hhc-28"><label for="hhc-28"><i class="fas fa-square"></i></label></div> <!-- Beat:3 Measure:2 -->
+            <div><input type="checkbox" id="hhc-29"><label for="hhc-29"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hhc-30"><label for="hhc-30"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hhc-31"><label for="hhc-31"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="hhc-32"><label for="hhc-32"><i class="fas fa-square"></i></label></div> <!-- Beat:4 Measure:2 -->
+          </div>
+          <input type="range" name="volume" min="-36" max="6" value="0" class="slider" id="hhc_volume" onchange="changePanVol(event)"> <!-- Volume slider -->
+          <input type="range" name="pan" min="-50" max="50" value="0" class="slider" id="hhc_pan" onchange="changePanVol(event)"> <!-- Pan slider -->
+          <button class="control del" onclick="deleteTrack(event)"><i class="fa fa-minus-circle"></i></button> <!-- Delete button -->
+        </div>
+
+        <div class="track" id="crash">
+          <button class="control key" id="crash_key" onclick="triggerTrack(event)">T</button> <!-- Trigger button -->
+          <input type="text" value="crash" class="track_name"> <!-- Track name -->
+          <input class="control color" type="color" id="crash_color" value="#ffffff" onchange="changeColor(event)"> <!-- Track color -->
+          <div class="loop"> <!-- Loop checkbox -->
+            <input type="checkbox" id="crash_loop" checked>
+            <label for="crash_loop"><i class="fa fa-sync"></i></label>
+          </div>
+          <div onclick="refreshColors()" class="sequence" id="crash_sequence">
+            <div><input type="checkbox" id="crash-1"><label for="crash-1"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="crash-2"><label for="crash-2"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="crash-3"><label for="crash-3"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="crash-4"><label for="crash-4"><i class="fas fa-square"></i></label></div> <!-- Beat:1 Measure:1 -->
+            <div><input type="checkbox" id="crash-5"><label for="crash-5"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="crash-6"><label for="crash-6"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="crash-7"><label for="crash-7"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="crash-8"><label for="crash-8"><i class="fas fa-square"></i></label></div> <!-- Beat:2 Measure:1 -->
+            <div><input type="checkbox" id="crash-9"><label for="crash-9"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="crash-10"><label for="crash-10"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="crash-11"><label for="crash-11"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="crash-12"><label for="crash-12"><i class="fas fa-square"></i></label></div> <!-- Beat:3 Measure:1 -->
+            <div><input type="checkbox" id="crash-13"><label for="crash-13"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="crash-14"><label for="crash-14"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="crash-15"><label for="crash-15"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="crash-16"><label for="crash-16"><i class="fas fa-square"></i></label></div> <!-- Beat:4 Measure:1 -->
+            <div><input type="checkbox" id="crash-17"><label for="crash-17"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="crash-18"><label for="crash-18"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="crash-19"><label for="crash-19"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="crash-20"><label for="crash-20"><i class="fas fa-square"></i></label></div> <!-- Beat:1 Measure:2 -->
+            <div><input type="checkbox" id="crash-21"><label for="crash-21"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="crash-22"><label for="crash-22"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="crash-23"><label for="crash-23"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="crash-24"><label for="crash-24"><i class="fas fa-square"></i></label></div> <!-- Beat:2 Measure:2 -->
+            <div><input type="checkbox" id="crash-25"><label for="crash-25"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="crash-26"><label for="crash-26"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="crash-27"><label for="crash-27"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="crash-28"><label for="crash-28"><i class="fas fa-square"></i></label></div> <!-- Beat:3 Measure:2 -->
+            <div><input type="checkbox" id="crash-29"><label for="crash-29"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="crash-30"><label for="crash-30"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="crash-31"><label for="crash-31"><i class="fas fa-square"></i></label></div><div><input type="checkbox" id="crash-32"><label for="crash-32"><i class="fas fa-square"></i></label></div> <!-- Beat:4 Measure:2 -->
+          </div>
+          <input type="range" name="volume" min="-36" max="6" value="0" class="slider" id="crash_volume" onchange="changePanVol(event)"> <!-- Volume slider -->
+          <input type="range" name="pan" min="-50" max="50" value="0" class="slider" id="crash_pan" onchange="changePanVol(event)"> <!-- Pan slider -->
+          <button class="control del" onclick="deleteTrack(event)"><i class="fa fa-minus-circle"></i></button> <!-- Delete button -->
+        </div>
+      </div>
+
+      <div id="samples" class="tabcontent">
+        <div class="list_container" data-simplebar>
+          <ul id="sample_list">
+            <!-- initBrowser() loads all samples as list items -->
+          </ul>
+        </div>
+        <div class="button_container">
+          <button class="control" onclick="loadSample(event)"><i class="far fa-arrow-alt-circle-right"></i> Load Sample</button>
+        </div>
+      </div>
+
+      <div id="credits" class="tabcontent" data-simplebar>
+        <h3>Created by Joshua Paul Jacob</h3>
+        <p>'FEEBACK' was made for my final project of my introduction to web programming course (CSE104 @ École Polytechnique). It was inspired by Abelton Live. Just like any other musical playground online, this is nothing but a toy. I doubt you can create the next smash hit with this, but you're certainly welcome to prove me wrong!</p>
+        <p>The main audio framework was built using <a href="https://tonejs.github.io/">Tone.js</a>, the fonts used are Open Sans and Gugi, the icons are from Font Awesome 5, and the fancy flying lines you see in the background are just a barely editied demo of <a href="https://tympanus.net/codrops/2019/01/08/animated-mesh-lines/">AnimatedMeshLines</a> which uses GSAP and is built on top of THREE.MeshLine. The neat little scroll bar is <a href="https://grsmto.github.io/simplebar/">simplebar</a>.</p>
+        <p>https://github.com/joshuapjacob/feedback</p>
+      </div>
+
+    </main>
+  </body>
+
+</html>

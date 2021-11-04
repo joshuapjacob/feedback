@@ -2,8 +2,9 @@
 A Powerful Online Audio Sample Sequencer. This was final project for my freshman-year introductory web programming course (CSE104 @ Ecole Polytechnique). Developed using HTML, CSS, and vanilla JavaScript (+ Tone.js) in 2019. The application allows you to select audio samples and make beats with them. Just like any other musical playground online, this is nothing but a toy. I doubt you can create the next smash hit with this, but you're certainly welcome to prove me wrong!
 
 <div align="center">
-  <img alt="Screenshot" src="https://raw.githubusercontent.com/joshuapjacob/feedback/main/img.png" width="1000" />
+  <img alt="Screenshot" src="https://raw.githubusercontent.com/joshuapjacob/feedback/master/img.png" width="1000" />
 </div>
+
 ## Project Setup
 You may host the application using any method but Python is the simplest. It must be hosted though!
 ```console
